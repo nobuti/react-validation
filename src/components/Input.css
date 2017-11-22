@@ -1,0 +1,39 @@
+.Input-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.Input-field + .Input-field {
+  margin-top: 1.5rem;
+}
+
+.Input {
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  color: #444;
+  font-family: 'Lato', sans-serif;
+  line-height: 3.8rem;
+  padding: 0 1rem;
+}
+
+.Input::placeholder {
+  color: #999;
+}
+
+.Input:focus {
+  border-color: transparent;
+  box-shadow: 0 0 6px rgba(24, 191, 238, 1);
+}
+
+.Input.has-error {
+  border-color: rgba(211, 45, 38, 1);
+}
+
+.Input.has-error:focus {
+  border-color: transparent;
+}
+
+.Input-textArea {
+  height: 20rem;
+  resize: none;
+}
