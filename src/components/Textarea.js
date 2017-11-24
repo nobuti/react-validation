@@ -1,14 +1,10 @@
 import React from "react";
-import "./Input.css";
+import "./Form-fields.css";
 
-const Textarea = props => {
+const Textarea = ({ name }) => {
   return (
-    <div className="Input-field">
-      <textarea
-        placeholder={props.name}
-        aria-label={props.name}
-        className="Input Input-textArea"
-      />
+    <div className="Form-field">
+      <textarea placeholder={name} aria-label={name} className="TextArea" />
     </div>
   );
 };

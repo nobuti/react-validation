@@ -49,19 +49,21 @@ img {
 }
 
 html {
-  height: 100%;
   font-size: 62.5%;
 }
 
 body {
-  background: linear-gradient(to bottom, rgba(30, 188, 237, 1) 0%, rgba(85, 208, 218, 1) 100%);
-  font-family: 'Lato', sans-serif;
-  display: flex;
-  min-height: 100%;
+  font-family: "Lato", sans-serif;
 }
 
 .Main {
   align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 188, 237, 1) 0%,
+    rgba(85, 208, 218, 1) 100%
+  );
   display: flex;
   flex: 1;
+  padding: 10rem 0;
 }

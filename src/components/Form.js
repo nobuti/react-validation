@@ -1,10 +1,13 @@
-import React, {Component} from 'react';
-import './Form.css';
+import React, { Component } from "react";
 
 class Form extends Component {
-  render () {
+  render() {
     return (
-      <form className='Form' onSubmit={() => {console.log('yay!')}}>
+      <form
+        onSubmit={() => {
+          console.log("yay!");
+        }}
+      >
         {this.props.children}
       </form>
     );

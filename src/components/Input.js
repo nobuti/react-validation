@@ -1,15 +1,17 @@
-import React from 'react';
-import './Input.css';
+import React from "react";
+import "./Form-fields.css";
 
-const Input = (props) => {
-  return <div className="Input-field">
-      <input 
-        type="text" 
-        placeholder={props.name} 
-        aria-label={props.name} 
-        className="Input" 
+const Input = ({ name }) => {
+  return (
+    <div className="Form-field">
+      <input
+        type="text"
+        placeholder={name}
+        aria-label={name}
+        className="Input"
       />
-    </div>;
-}
+    </div>
+  );
+};
 
 export default Input;
