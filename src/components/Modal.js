@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
-import Form from './Form';
-import Input from './Input';
-import Textarea from './Textarea';
-import './Modal.css';
+import React, { Component } from "react";
+import Form from "./Form";
+import Input from "./Input";
+import Textarea from "./Textarea";
+import Image from "./Image";
+
+import "./Modal.css";
+import "./Button.css";
 
 class Modal extends Component {
+  deleteImage = image => {
+    console.log(image);
+  };
+
   render() {
-    return <div className="Modal">
+    return (
+      <div className="Modal">
         <div className="Modal-header">
           <h1>Send E-mail</h1>
         </div>

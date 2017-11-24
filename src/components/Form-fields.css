@@ -1,0 +1,43 @@
+.Form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.Form-field + .Form-field {
+  margin-top: 1.5rem;
+}
+
+.Input,
+.TextArea {
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  color: #444;
+  font-family: "Lato", sans-serif;
+  line-height: 3.8rem;
+  padding: 0 1rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.TextArea {
+  height: 20rem;
+  resize: none;
+}
+
+.Input::placeholder,
+.TextArea::placeholder {
+  color: #999;
+}
+
+.Input:focus,
+.TextArea:focus {
+  border-color: transparent;
+  box-shadow: 0 0 6px rgba(24, 191, 238, 1);
+}
+
+.Field-input .has-error {
+  border-color: rgba(211, 45, 38, 1);
+}
+
+.Field-input .has-error:focus {
+  border-color: transparent;
+}

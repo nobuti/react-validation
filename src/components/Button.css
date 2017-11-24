@@ -1,0 +1,50 @@
+.Button {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  color: #999;
+  display: flex;
+  line-height: 1;
+  outline: none;
+  transition: background-color 0.5s ease;
+}
+
+.Button svg {
+  display: block;
+  fill: #999;
+  height: 2rem;
+}
+
+.Button-label {
+  margin-left: 0.8rem;
+}
+
+.Button[type="button"] {
+  padding: 1rem;
+}
+
+.Button[type="submit"] {
+  padding: 1rem 1.5rem;
+}
+
+.Button:disabled,
+.Button:disabled:active {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.Button:disabled svg,
+.Button:disabled:active svg {
+  fill: #999;
+}
+
+.Button:active {
+  background-color: rgba(24, 191, 238, 1);
+  color: #fff;
+}
+
+.Button:active svg {
+  fill: #fff;
+}
