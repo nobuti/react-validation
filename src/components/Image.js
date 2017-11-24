@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Image.css";
 
 const inlineStyle = src => {
@@ -22,6 +23,11 @@ const Image = ({ src, onDelete }) => {
       </svg>
     </button>
   );
+};
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired
 };
 
 export default Image;

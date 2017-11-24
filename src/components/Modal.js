@@ -8,8 +8,31 @@ import "./Modal.css";
 import "./Button.css";
 
 class Modal extends Component {
+  state = {
+    To: "",
+    CC: "",
+    BCC: "",
+    Message: "",
+    errors: {},
+    images: []
+  };
+
+  onChange = (field, value) => {
+    this.setState(state => {
+      return {
+        ...state,
+        [field]: value
+      };
+    });
+  };
+
   deleteImage = image => {
-    console.log(image);
+    this.setState(state => {
+      return {
+        ...state,
+        images: state.images.filter(item => item !== image)
+      };
+    });
   };
 
   render() {
@@ -21,11 +44,11 @@ class Modal extends Component {
 
         <div className="Modal-body">
           <Form>
-            <Input name="To" />
-            <Input name="CC" />
-            <Input name="BCC" />
-            <Input name="Subject" />
-            <Textarea name="Message" />
+            <Input name="To" onChange={this.onChange} />
+            <Input name="CC" onChange={this.onChange} />
+            <Input name="BCC" onChange={this.onChange} />
+            <Input name="Subject" onChange={this.onChange} />
+            <Textarea name="Message" onChange={this.onChange} />
 
             <ul className="Modal-images">
               <li className="Modal-image">
@@ -41,6 +64,7 @@ class Modal extends Component {
                 />
               </li>
             </ul>
+
             <ul className="Modal-controls">
               <li>
                 <button type="button" className="Button">
