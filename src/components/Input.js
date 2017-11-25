@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Form-fields.css";
 
-const Input = ({ name, onChange }) => {
+const Input = ({ name, error = false, onChange }) => {
   const onChangeHandler = e => {
     onChange(name, e.target.value);
   };
+
+  const css = error ? "Input has-error" : "Input";
 
   return (
     <div className="Form-field">
@@ -13,7 +15,7 @@ const Input = ({ name, onChange }) => {
         type="text"
         placeholder={name}
         aria-label={name}
-        className="Input"
+        className={css}
         onChange={onChangeHandler}
       />
     </div>
@@ -22,6 +24,7 @@ const Input = ({ name, onChange }) => {
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
+  error: PropTypes.bool,
   onChange: PropTypes.func.isRequired
 };
 

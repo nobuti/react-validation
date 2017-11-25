@@ -4,7 +4,8 @@ class Form extends Component {
   render() {
     return (
       <form
-        onSubmit={() => {
+        onSubmit={e => {
+          e.preventDefault();
           console.log("yay!");
         }}
       >

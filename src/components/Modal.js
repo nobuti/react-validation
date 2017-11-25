@@ -4,10 +4,26 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import Image from "./Image";
 import InputFile from "./InputFile";
+import Submit from "./Submit";
 import { uuid } from "../utils";
 
 import "./Modal.css";
 import "./Button.css";
+import { validEmail, required, lessThan, validate } from "../validations/index";
+
+const validations = {
+  To: [required, validEmail],
+  CC: [validEmail],
+  BCC: [validEmail],
+  Subject: [required, lessThan(100)],
+  Message: [required]
+};
+
+const anyError = error => {
+  return Object.keys(error).length > 0;
+};
+
+const getError = (error, key) => error[key];
 
 class Modal extends Component {
   state = {
@@ -15,7 +31,7 @@ class Modal extends Component {
     CC: "",
     BCC: "",
     Message: "",
-    errors: {},
+    Subject: "",
     images: []
   };
 
@@ -69,6 +85,8 @@ class Modal extends Component {
   };
 
   render() {
+    const errors = validate(this.state, validations);
+
     return (
       <div className="Modal">
         <div className="Modal-header">
@@ -77,11 +95,31 @@ class Modal extends Component {
 
         <div className="Modal-body">
           <Form>
-            <Input name="To" onChange={this.onChange} />
-            <Input name="CC" onChange={this.onChange} />
-            <Input name="BCC" onChange={this.onChange} />
-            <Input name="Subject" onChange={this.onChange} />
-            <Textarea name="Message" onChange={this.onChange} />
+            <Input
+              name="To"
+              error={getError(errors, "To")}
+              onChange={this.onChange}
+            />
+            <Input
+              name="CC"
+              error={getError(errors, "CC")}
+              onChange={this.onChange}
+            />
+            <Input
+              name="BCC"
+              error={getError(errors, "BCC")}
+              onChange={this.onChange}
+            />
+            <Input
+              name="Subject"
+              error={getError(errors, "Subject")}
+              onChange={this.onChange}
+            />
+            <Textarea
+              name="Message"
+              error={getError(errors, "Message")}
+              onChange={this.onChange}
+            />
 
             <ul className="Modal-images">{this.renderImages()}</ul>
 
@@ -90,12 +128,9 @@ class Modal extends Component {
                 <InputFile onFileChange={this.onFileChange} />
               </li>
               <li>
-                <button type="submit" className="Button" disabled>
-                  <svg viewBox="0 0 512 512">
-                    <path d="M511.19 251.924c-.534-1.323-1.324-2.496-2.326-3.477l-191.98-191.98c-4.16-4.16-10.922-4.16-15.082 0s-4.16 10.924 0 15.084l173.78 173.782H10.668C4.78 245.332 0 250.112 0 256s4.78 10.666 10.667 10.666h464.917l-173.78 173.78c-4.16 4.16-4.16 10.924 0 15.084 2.09 2.09 4.82 3.115 7.55 3.115 2.732 0 5.462-1.045 7.553-3.115l191.98-191.98c.98-.98 1.77-2.175 2.324-3.476 1.046-2.603 1.046-5.547-.02-8.15z" />
-                  </svg>
+                <Submit disable={anyError(errors)}>
                   <span className="Button-label">Send</span>
-                </button>
+                </Submit>
               </li>
             </ul>
           </Form>

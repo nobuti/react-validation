@@ -28,8 +28,23 @@
   padding: 1rem 1.5rem;
 }
 
+.Button:active,
+.Button[type="submit"] {
+  background-color: rgba(24, 191, 238, 1);
+  border-color: rgba(24, 191, 238, 1);
+  color: #fff;
+}
+
+.Button[type="submit"] svg {
+  fill: #fff;
+}
+.Button:active svg {
+  fill: #fff;
+}
+
 .Button:disabled,
 .Button:disabled:active {
+  border-color: #ddd;
   background-color: #ddd;
   color: #999;
   cursor: not-allowed;
@@ -38,13 +53,4 @@
 .Button:disabled svg,
 .Button:disabled:active svg {
   fill: #999;
-}
-
-.Button:active {
-  background-color: rgba(24, 191, 238, 1);
-  color: #fff;
-}
-
-.Button:active svg {
-  fill: #fff;
 }

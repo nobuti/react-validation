@@ -11,11 +11,22 @@ describe("Textarea", () => {
     ReactDOM.render(<Textarea name="foo" onChange={onTextareaChange} />, div);
   });
 
-  it("has proper css class", () => {
-    const textarea = shallow(
-      <Textarea name="wadus" onChange={onTextareaChange} />
-    );
-    expect(textarea.hasClass("Textarea"));
+  describe("css class", () => {
+    it("no error", () => {
+      const textarea = shallow(
+        <Textarea name="wadus" onChange={onTextareaChange} />
+      );
+      expect(textarea.find("textarea").hasClass("TextArea")).toBe(true);
+      expect(textarea.find("textarea").hasClass("has-error")).toBe(false);
+    });
+
+    it("has error", () => {
+      const textarea = shallow(
+        <Textarea name="wadus" error={true} onChange={onTextareaChange} />
+      );
+      expect(textarea.find("textarea").hasClass("TextArea")).toBe(true);
+      expect(textarea.find("textarea").hasClass("has-error")).toBe(true);
+    });
   });
 
   it("calls onChange callback when changing", () => {

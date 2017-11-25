@@ -29,15 +29,13 @@
 }
 
 .Input:focus,
-.TextArea:focus {
+.TextArea:focus,
+.Form-field .has-error:focus {
   border-color: transparent;
   box-shadow: 0 0 6px rgba(24, 191, 238, 1);
 }
 
-.Field-input .has-error {
-  border-color: rgba(211, 45, 38, 1);
-}
-
-.Field-input .has-error:focus {
+.Form-field .has-error {
   border-color: transparent;
+  box-shadow: 0 0 6px rgba(211, 45, 38, 1);
 }

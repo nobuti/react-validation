@@ -12,9 +12,22 @@ describe("Input", () => {
     ReactDOM.render(<Input name="wadus" onChange={onInputChange} />, div);
   });
 
-  it("has proper css class", () => {
-    const input = shallow(<Input name="wadus" onChange={onInputChange} />);
-    expect(input.hasClass("Input"));
+  describe("css class", () => {
+    it("no error", () => {
+      const input = shallow(
+        <Input name="wadus" onChange={onInputChange} error={false} />
+      );
+      expect(input.find("input").hasClass("Input")).toBe(true);
+      expect(input.find("input").hasClass("has-error")).toBe(false);
+    });
+
+    it("has error", () => {
+      const input = shallow(
+        <Input name="wadus" onChange={onInputChange} error={true} />
+      );
+      expect(input.find("input").hasClass("Input")).toBe(true);
+      expect(input.find("input").hasClass("has-error")).toBe(true);
+    });
   });
 
   it("calls onChange callback when changing", () => {
