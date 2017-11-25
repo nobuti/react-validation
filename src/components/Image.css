@@ -11,14 +11,20 @@
   height: 100px;
 }
 
-.Image svg {
+.Image .Trash {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  opacity: 0;
+  padding: 1.5rem;
   pointer-events: none;
   transition: opacity 0.4s ease;
-  opacity: 0;
-  width: 30px;
-  fill: #ff666e;
 }
 
-.Image:hover svg {
+.Image svg {
+  width: 30px;
+  fill: #eeeeee;
+}
+
+.Image:hover .Trash {
   opacity: 1;
 }
