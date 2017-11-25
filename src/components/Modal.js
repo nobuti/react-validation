@@ -3,6 +3,8 @@ import Form from "./Form";
 import Input from "./Input";
 import Textarea from "./Textarea";
 import Image from "./Image";
+import InputFile from "./InputFile";
+import { uuid } from "../utils";
 
 import "./Modal.css";
 import "./Button.css";
@@ -26,12 +28,43 @@ class Modal extends Component {
     });
   };
 
-  deleteImage = image => {
+  onFileChange = e => {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState(state => {
+        const image = { url: reader.result, uuid: uuid() };
+        return { ...state, images: [...state.images, image] };
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  deleteImage = uuid => {
     this.setState(state => {
       return {
         ...state,
-        images: state.images.filter(item => item !== image)
+        images: state.images.filter(item => item.uuid !== uuid)
       };
+    });
+  };
+
+  renderImages = () => {
+    const { images } = this.state;
+    return images.map(image => {
+      return (
+        <li key={image.uuid} className="Modal-image">
+          <Image
+            src={image.url}
+            uuid={image.uuid}
+            onDelete={this.deleteImage}
+          />
+        </li>
+      );
     });
   };
 
@@ -50,28 +83,11 @@ class Modal extends Component {
             <Input name="Subject" onChange={this.onChange} />
             <Textarea name="Message" onChange={this.onChange} />
 
-            <ul className="Modal-images">
-              <li className="Modal-image">
-                <Image
-                  src="https://www.dropbox.com/s/fjhsvx2dh65sznl/tw.jpg?raw=1"
-                  onDelete={this.deleteImage}
-                />
-              </li>
-              <li className="Modal-image">
-                <Image
-                  src="https://www.dropbox.com/s/kqlbay75n8xvyhk/supermanhulk-8-bit-jesus-castaneda.jpg?raw=1"
-                  onDelete={this.deleteImage}
-                />
-              </li>
-            </ul>
+            <ul className="Modal-images">{this.renderImages()}</ul>
 
             <ul className="Modal-controls">
               <li>
-                <button type="button" className="Button">
-                  <svg viewBox="0 0 512 512">
-                    <path d="M359.784 103.784v262.92c0 57.225-46.557 103.783-103.784 103.783S152.216 423.93 152.216 366.703v-262.92c0-34.335 27.934-62.27 62.27-62.27s62.27 27.935 62.27 62.27v262.92c0 11.445-9.312 20.757-20.757 20.757s-20.758-9.31-20.758-20.757v-262.92H193.73v262.92c0 34.336 27.934 62.27 62.27 62.27s62.27-27.934 62.27-62.27v-262.92C318.27 46.558 271.713 0 214.487 0S110.703 46.557 110.703 103.784v262.92C110.703 446.82 175.883 512 256 512s145.297-65.18 145.297-145.297v-262.92h-41.513z" />
-                  </svg>
-                </button>
+                <InputFile onFileChange={this.onFileChange} />
               </li>
               <li>
                 <button type="submit" className="Button" disabled>

@@ -8,12 +8,12 @@ const inlineStyle = src => {
   };
 };
 
-const Image = ({ src, onDelete }) => {
+const Image = ({ src, onDelete, uuid }) => {
   return (
     <button
       type="button"
       onClick={e => {
-        onDelete(src);
+        onDelete(uuid);
       }}
       className="Image"
       style={inlineStyle(src)}
@@ -29,7 +29,8 @@ const Image = ({ src, onDelete }) => {
 
 Image.propTypes = {
   src: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  uuid: PropTypes.string.isRequired
 };
 
 export default Image;

@@ -9,16 +9,23 @@ describe("Image", () => {
 
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<Image src="foo.jog" onDelete={onImageClick} />, div);
+    ReactDOM.render(
+      <Image src="foo.jog" uuid="wadus" onDelete={onImageClick} />,
+      div
+    );
   });
 
   it("has proper css class", () => {
-    const image = shallow(<Image src="foo.jpg" onDelete={onImageClick} />);
+    const image = shallow(
+      <Image src="foo.jpg" uuid="wadus" onDelete={onImageClick} />
+    );
     expect(image.hasClass("Image"));
   });
 
   it("calls onChange callback when changing", () => {
-    const image = shallow(<Image src="foo.jpg" onDelete={onImageClick} />);
+    const image = shallow(
+      <Image src="foo.jpg" uuid="wadus" onDelete={onImageClick} />
+    );
     image.find("button").simulate("click");
     expect(onImageClick.calledOnce).toBe(true);
   });
