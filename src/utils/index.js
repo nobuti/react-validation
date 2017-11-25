@@ -5,5 +5,5 @@ function s4() {
 }
 
 export const uuid = () => {
-  return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+  return `${s4()}-${s4()}`;
 };
