@@ -11,21 +11,28 @@ describe("Textarea", () => {
     ReactDOM.render(<Textarea name="foo" onChange={onTextareaChange} />, div);
   });
 
-  describe("css class", () => {
+  describe("error css class", () => {
+    it("initially", () => {
+      const textarea = shallow(
+        <Textarea name="wadus" onChange={onTextareaChange} />
+      );
+      expect(textarea.find(".TextArea").hasClass("has-error")).toBe(false);
+    });
+
     it("no error", () => {
       const textarea = shallow(
         <Textarea name="wadus" onChange={onTextareaChange} />
       );
-      expect(textarea.find("textarea").hasClass("TextArea")).toBe(true);
-      expect(textarea.find("textarea").hasClass("has-error")).toBe(false);
+      textarea.find("textarea").simulate("blur");
+      expect(textarea.find(".TextArea").hasClass("has-error")).toBe(false);
     });
 
     it("has error", () => {
       const textarea = shallow(
         <Textarea name="wadus" error={true} onChange={onTextareaChange} />
       );
-      expect(textarea.find("textarea").hasClass("TextArea")).toBe(true);
-      expect(textarea.find("textarea").hasClass("has-error")).toBe(true);
+      textarea.find("textarea").simulate("blur");
+      expect(textarea.find(".TextArea").hasClass("has-error")).toBe(true);
     });
   });
 
@@ -35,5 +42,14 @@ describe("Textarea", () => {
     );
     textarea.find("textarea").simulate("change", { target: { value: "foo" } });
     expect(onTextareaChange.calledOnce).toBe(true);
+  });
+
+  it("onBlur allow showing errors", () => {
+    const textarea = shallow(
+      <Textarea name="wadus" onChange={onTextareaChange} />
+    );
+    expect(textarea.instance().state.showError).toBe(false);
+    textarea.find("textarea").simulate("blur");
+    expect(textarea.instance().state.showError).toBe(true);
   });
 });

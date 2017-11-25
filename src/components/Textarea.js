@@ -1,24 +1,42 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import "./Form-fields.css";
 
-const Textarea = ({ name, error = false, onChange }) => {
-  const onChangeHandler = e => {
+class Textarea extends Component {
+  state = {
+    showError: false
+  };
+
+  onBlurHandler = e => {
+    this.setState({ showError: true });
+  };
+
+  onChangeHandler = e => {
+    const { onChange, name } = this.props;
     onChange(name, e.target.value);
   };
 
-  const css = error ? "TextArea has-error" : "TextArea";
+  render() {
+    const { error, name } = this.props;
+    const { showError } = this.state;
+    const css = error && showError ? "TextArea has-error" : "TextArea";
 
-  return (
-    <div className="Form-field">
-      <textarea
-        placeholder={name}
-        aria-label={name}
-        className={css}
-        onChange={onChangeHandler}
-      />
-    </div>
-  );
+    return (
+      <div className="Form-field">
+        <textarea
+          placeholder={name}
+          aria-label={name}
+          className={css}
+          onChange={this.onChangeHandler}
+          onBlur={this.onBlurHandler}
+        />
+      </div>
+    );
+  }
+}
+
+Textarea.defaultProps = {
+  error: false
 };
 
 Textarea.propTypes = {
