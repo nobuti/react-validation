@@ -14,9 +14,8 @@
   color: #444;
   font-family: "Lato", sans-serif;
   font-size: 1.4rem;
-  line-height: 3.8rem;
-  outline: none;
-  padding: 0 1rem;
+  line-height: 1;
+  padding: 1rem;
   transition: box-shadow 0.2s ease;
 }
 
@@ -35,6 +34,7 @@
 .Form-field .has-error:focus {
   border-color: transparent;
   box-shadow: 0 0 6px rgba(24, 191, 238, 1);
+  outline: none;
 }
 
 .Form-field .has-error {

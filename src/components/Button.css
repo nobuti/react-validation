@@ -37,6 +37,7 @@
 
 .Button[type="submit"] svg {
   fill: #fff;
+  width: 2rem;
 }
 .Button:active svg {
   fill: #fff;

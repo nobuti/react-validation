@@ -10,3 +10,7 @@
   position: absolute;
   top: 0;
 }
+
+.InputFile svg {
+  width: 2rem;
+}
