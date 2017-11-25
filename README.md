@@ -1,4 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 # React validation
 
@@ -7,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * yarn `^0.23.0` or npm `^3.0.0`
 
 ## Instalation
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 After confirming that your environment meets the above [requirements](#requirements), you can install the repo by doing the following:
 
