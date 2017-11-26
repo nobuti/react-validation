@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import sinon from "sinon";
 import Input from "./Input";
+import FormField from "./FormField";
 
 describe("Input", () => {
   const onInputChange = sinon.spy();
@@ -14,40 +15,45 @@ describe("Input", () => {
 
   describe("error css class", () => {
     it("initially", () => {
-      const input = shallow(
+      const input = mount(
         <Input name="wadus" onChange={onInputChange} error={false} />
       );
       input.find("input").simulate("blur");
       expect(input.find(".Input").hasClass("has-error")).toBe(false);
+      input.unmount();
     });
 
     it("no error", () => {
-      const input = shallow(
+      const input = mount(
         <Input name="wadus" onChange={onInputChange} error={false} />
       );
       input.find("input").simulate("blur");
       expect(input.find(".Input").hasClass("has-error")).toBe(false);
+      input.unmount();
     });
 
     it("has error", () => {
-      const input = shallow(
+      const input = mount(
         <Input name="wadus" onChange={onInputChange} error={true} />
       );
       input.find("input").simulate("blur");
       expect(input.find(".Input").hasClass("has-error")).toBe(true);
+      input.unmount();
     });
   });
 
   it("calls onChange callback when changing", () => {
-    const input = shallow(<Input name="wadus" onChange={onInputChange} />);
+    const input = mount(<Input name="wadus" onChange={onInputChange} />);
     input.find("input").simulate("change", { target: { value: "foo" } });
     expect(onInputChange.calledOnce).toBe(true);
+    input.unmount();
   });
 
   it("onBlur allow showing errors", () => {
-    const input = shallow(<Input name="wadus" onChange={onInputChange} />);
-    expect(input.instance().state.showError).toBe(false);
+    const input = mount(<Input name="wadus" onChange={onInputChange} />);
+    expect(input.find(FormField).instance().state.showError).toBe(false);
     input.find("input").simulate("blur");
-    expect(input.instance().state.showError).toBe(true);
+    expect(input.find(FormField).instance().state.showError).toBe(true);
+    input.unmount();
   });
 });

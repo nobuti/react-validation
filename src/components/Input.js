@@ -1,45 +1,32 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import FormField from "./FormField";
+
 import "./Form-fields.css";
 
-class Input extends Component {
-  state = {
-    showError: false
-  };
+const Input = props => {
+  return (
+    <FormField
+      {...props}
+      render={({ showError, onBlur, onChange }) => {
+        const { error, name } = props;
+        const css = error && showError ? "Input has-error" : "Input";
 
-  onBlurHandler = e => {
-    this.setState(state => {
-      return { showError: true };
-    });
-  };
-
-  onChangeHandler = e => {
-    const { onChange, name } = this.props;
-    onChange(name, e.target.value);
-  };
-
-  render() {
-    const { showError } = this.state;
-    const { name, error } = this.props;
-    const css = error && showError ? "Input has-error" : "Input";
-
-    return (
-      <div className="Form-field">
-        <input
-          type="text"
-          placeholder={name}
-          aria-label={name}
-          className={css}
-          onChange={this.onChangeHandler}
-          onBlur={this.onBlurHandler}
-        />
-      </div>
-    );
-  }
-}
-
-Input.defaultProps = {
-  error: false
+        return (
+          <div className="Form-field">
+            <input
+              type="text"
+              placeholder={name}
+              aria-label={name}
+              className={css}
+              onChange={onChange}
+              onBlur={onBlur}
+            />
+          </div>
+        );
+      }}
+    />
+  );
 };
 
 Input.propTypes = {
