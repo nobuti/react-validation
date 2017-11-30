@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import Form from "./Form";
-import Input from "./Input";
-import Textarea from "./Textarea";
-import Image from "./Image";
-import InputFile from "./InputFile";
-import Submit from "./Submit";
-import { uuid } from "../utils";
+import React, { Component } from 'react';
+import Form from './Form';
+import Input from './Input';
+import Textarea from './Textarea';
+import Image from './Image';
+import InputFile from './InputFile';
+import Submit from './Submit';
+import { uuid } from '../utils';
 
-import "./Modal.css";
-import "./Button.css";
-import { validEmail, required, lessThan, validate } from "../validations/index";
+import './Modal.css';
+import './Button.css';
+import { validEmail, required, lessThan, validate } from '../validations/index';
 
 const validations = {
   To: [required, validEmail],
@@ -27,11 +27,11 @@ const getError = (error, key) => error[key];
 
 class Modal extends Component {
   state = {
-    To: "",
-    CC: "",
-    BCC: "",
-    Message: "",
-    Subject: "",
+    To: '',
+    CC: '',
+    BCC: '',
+    Message: '',
+    Subject: '',
     images: []
   };
 
@@ -97,27 +97,27 @@ class Modal extends Component {
           <Form>
             <Input
               name="To"
-              error={getError(errors, "To")}
+              error={getError(errors, 'To')}
               onChange={this.onChange}
             />
             <Input
               name="CC"
-              error={getError(errors, "CC")}
+              error={getError(errors, 'CC')}
               onChange={this.onChange}
             />
             <Input
               name="BCC"
-              error={getError(errors, "BCC")}
+              error={getError(errors, 'BCC')}
               onChange={this.onChange}
             />
             <Input
               name="Subject"
-              error={getError(errors, "Subject")}
+              error={getError(errors, 'Subject')}
               onChange={this.onChange}
             />
             <Textarea
               name="Message"
-              error={getError(errors, "Message")}
+              error={getError(errors, 'Message')}
               onChange={this.onChange}
             />
 

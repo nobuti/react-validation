@@ -20,22 +20,22 @@
   margin-left: 0.8rem;
 }
 
-.Button[type="button"] {
+.Button[type='button'] {
   padding: 1rem;
 }
 
-.Button[type="submit"] {
+.Button[type='submit'] {
   padding: 1rem 1.5rem;
 }
 
 .Button:active,
-.Button[type="submit"] {
+.Button[type='submit'] {
   background-color: rgba(24, 191, 238, 1);
   border-color: rgba(24, 191, 238, 1);
   color: #fff;
 }
 
-.Button[type="submit"] svg {
+.Button[type='submit'] svg {
   fill: #fff;
   width: 2rem;
 }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Form extends Component {
   render() {
@@ -6,7 +6,7 @@ class Form extends Component {
       <form
         onSubmit={e => {
           e.preventDefault();
-          console.log("yay!");
+          console.log('yay!');
         }}
       >
         {this.props.children}

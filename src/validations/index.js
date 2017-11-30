@@ -1,10 +1,10 @@
 export const validEmail = emails => {
-  if (emails === "") {
+  if (emails === '') {
     return true;
   }
 
   const reg = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
-  const target = emails.split(",").map(i => i.trim());
+  const target = emails.split(',').map(i => i.trim());
 
   return target.every(email => {
     return reg.test(email);

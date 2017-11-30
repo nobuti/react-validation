@@ -3,7 +3,7 @@
   position: relative;
 }
 
-.InputFile input[type="file"] {
+.InputFile input[type='file'] {
   bottom: 0;
   left: 0;
   opacity: 0;

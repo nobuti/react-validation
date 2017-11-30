@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import FormField from "./FormField";
+import React from 'react';
+import PropTypes from 'prop-types';
+import FormField from './FormField';
 
-import "./Form-fields.css";
+import './Form-fields.css';
 
 const Input = props => {
   return (
@@ -10,7 +10,7 @@ const Input = props => {
       {...props}
       render={({ showError, onBlur, onChange }) => {
         const { error, name } = props;
-        const css = error && showError ? "Input has-error" : "Input";
+        const css = error && showError ? 'Input has-error' : 'Input';
 
         return (
           <div className="Form-field">

@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import "./InputFile.css";
-import "./Button.css";
+import './InputFile.css';
+import './Button.css';
 
 const InputFile = ({ onFileChange }) => {
   return (

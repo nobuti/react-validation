@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Image.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Image.css';
 
 const inlineStyle = src => {
   return {
